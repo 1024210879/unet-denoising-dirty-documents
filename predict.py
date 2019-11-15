@@ -5,10 +5,11 @@ import os
 from unet import UNet
 
 weight = './weight/weight.pth'
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # load net
 print('load net')
-net = UNet(1, 2)
+net = UNet(1, 2).to(device)
 if os.path.exists(weight):
     checkpoint = torch.load(weight)
     net.load_state_dict(checkpoint['net'])
@@ -37,7 +38,7 @@ for index, filename in enumerate(filenames):
     # img = cv2.blur(img, (3, 3))
 
     input = torch.from_numpy(img[np.newaxis][np.newaxis]).float() / 255
-    output = net(input)[0, 0].detach().numpy()
+    output = net(input.to(device))[0, 0].detach().data.cpu().numpy()
     res = np.concatenate((img/255, output), axis=1)
 
     winname = filename + ' %d | %d ' % (index + 1, totalN)
