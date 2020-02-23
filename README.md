@@ -9,7 +9,7 @@ numpy 1.16.2<br>
 
 # usage
 ## 1. dataset
-下载链接：[denoising-dirty-documents数据集](https://pan.baidu.com/s/17chJLi_uDJovKR2zboFcvA)<br>提取码：cf7c<br>
+下载链接：[denoising-dirty-documents数据集](https://pan.baidu.com/s/1_ge63IVuuVqifbi_iXPoJg)<br>提取码：d8l7<br>
 ![dir.jpg](images/dir.jpg)
 ## 2. train
 ```python train.py```<br>
